@@ -14,9 +14,6 @@ class AutomobileVO(models.Model):
     sold = models.BooleanField(default= False) 
 
 
-
-
-
 class Appointment(models.Model):
     date_time = models.DateTimeField()
     reason = models.CharField(max_length=200)
