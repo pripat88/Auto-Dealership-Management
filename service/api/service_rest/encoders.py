@@ -33,3 +33,11 @@ class AppointmentEncoder(ModelEncoder):
     encoders = {
         "technician": TechnicianEncoder(),
     }
+
+class TechnicianEncoder(ModelEncoder):
+    model = Technician
+    properties =[
+        "first_name",
+        "last_name",
+        "employee_id",
+    ]
