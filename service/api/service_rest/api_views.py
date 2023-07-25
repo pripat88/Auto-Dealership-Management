@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators import require_http_methods
 from .models import Appointment, AutomobileVO, Technician
-from .encoders import TechnicianEncoder
+from .encoders import TechnicianEncoder, AutomobileVOEncoder
 import json
 from datetime import datetime
 
