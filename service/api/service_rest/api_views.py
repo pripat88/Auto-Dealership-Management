@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators import require_http_methods
 from .models import Appointment, AutomobileVO, Technician
-from .encoders import TechnicianEncoder, AutomobileVOEncoder, AppointmentEncoder
+from .encoders import TechnicianEncoder, AppointmentEncoder
 import json
 from datetime import datetime
 
@@ -22,6 +22,22 @@ def api_list_technician(request):
             {"technicians": technicians},
             encoder=TechnicianEncoder,
             safe=False
+        )
+
+@require_http_methods(["DELETE", "GET"])
+def api_show_technician(request, pk):
+    if request.method == "GET":
+        technician = Technician.objects.get(id=pk)
+        return JsonResponse(
+            {"technician":technician},
+            encoder = TechnicianEncoder,
+            safe = False,
+        )
+    else:
+        request.method == "DELETE"
+        count, _ = Technician.objects.filter(id=pk).delete()
+        return JsonResponse(
+            {"deleted": count > 0}
         )
 
 @require_http_methods(["DELETE", "GET", "POST"])
