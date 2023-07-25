@@ -41,3 +41,22 @@ class TechnicianEncoder(ModelEncoder):
         "last_name",
         "employee_id",
     ]
+
+class AutomobileVOEncoder(ModelEncoder):
+    model = AutomobileVO
+    properties =[
+        "vin",
+        "sold",
+    ]
+
+class Appointment(ModelEncoder):
+    model = Appointment
+    properties =[
+        "date_time",
+        "reason",
+        "status",
+        "vin",
+        "customer",
+        "technician"
+        "vip"
+    ]
