@@ -10,7 +10,7 @@ class AutomobileVO(models.Model):
         return self.vin
 
 
-class Salesperson(models.Model):
+class SalesPerson(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     employee_id = models.PositiveSmallIntegerField()
@@ -35,7 +35,7 @@ class Sale(models.Model):
         related_name="Sale",
         on_delete=models.CASCADE)
     salesperson = models.ForeignKey(
-        Salesperson,
+        SalesPerson,
         related_name="Sale",
         on_delete=models.CASCADE)
     customer = models.ForeignKey(
