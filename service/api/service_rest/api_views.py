@@ -116,6 +116,22 @@ def api_list_technician(request):
             safe=False
         )
 
+@require_http_methods(["DELETE", "GET"])
+def api_show_technician(request, pk):
+    if request.method == "GET":
+        technician = Technician.objects.get(id=pk)
+        return JsonResponse(
+            {"technician":technician},
+            encoder = TechnicianEncoder,
+            safe = False,
+        )
+    else:
+        request.method == "DELETE"
+        count, _ = Technician.objects.filter(id=pk).delete()
+        return JsonResponse(
+            {"deleted": count > 0}
+        )
+
 @require_http_methods(["DELETE", "GET", "POST"])
 def api_show_appointment(request, pk):
     if request.method == "GET":
