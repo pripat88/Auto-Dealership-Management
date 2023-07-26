@@ -6,20 +6,17 @@ function SalesForm() {
     const navigate = useNavigate();
 
     const [automobile, setAutomobile] = useState('');
-    const handleAutomobileChange = (event) => setName(event.target.value);
-
     const [salesPerson, setSalesPerson] = useState('');
-    const handleSalesPersonChange = (event) => setAddress(event.target.value);
-
     const [customer, setCustomer] = useState('');
-    const handleCustomerChange = (event) => setName(event.target.value);
-
     const [price, setPrice] = useState('');
-    const handlePriceChange = (event) => setName(event.target.value);
-
     const[automobiles, setAutomobiles] = useState([]);
     const[salesPersons, setSalesPersons] = useState([]);
     const[customers, setCustomers] = useState([]);
+
+    const handleAutomobileChange = (event) => setAutomobile(event.target.value);
+    const handleSalesPersonChange = (event) => setSalesPerson(event.target.value);
+    const handleCustomerChange = (event) => setCustomer(event.target.value);
+    const handlePriceChange = (event) => setPrice(event.target.value);
 
     const getAll = async () => {
         const automobileUrl = 'http://localhost:8090/api/automobiles/';
@@ -96,7 +93,7 @@ function SalesForm() {
               <div className="mb-3">
                 <select onChange={handleAutomobileChange} required type="text" name="automobile" id="automobile" value={automobile} className="form-control">
                 <option value="">Choose an automobile</option>
-                {bins.map((bin) => {
+                {automobiles.map((automobiles) => {
                   return (
                     <option key={automobile.vin} value={automobile.vin}>
                       {automobile.vin}
@@ -108,7 +105,7 @@ function SalesForm() {
                 <div className="mb-3">
                 <select onChange={handleSalesPersonChange} required type="text" name="sales_person" id="sales_person" value={salesPerson} className="form-control" >
                 <option value="">Choose a sales person</option>
-                {bins.map((bin) => {
+                {salesPersons.map((salesPersons) => {
                   return (
                     <option key={salesPerson.id} value={salesPerson.id}>
                       {salesPerson.name}
@@ -120,7 +117,7 @@ function SalesForm() {
                 <div className="mb-3">
                 <select onChange={handleCustomerChange} required type= "text" name="customer" id="customer" value={customer} className="form-control" >
                 <option value="">Choose a customer</option>
-                {bins.map((bin) => {
+                {customers.map((customers) => {
                   return (
                     <option key={customer.id} value={customer.id}>
                       {customer.name}

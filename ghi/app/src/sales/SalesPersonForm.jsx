@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 function SalesPerson() {
-    const [firstName, setFirstName] = useState(false);
-    const handleFirstNameChange = (event) => setName(event.target.value);
-
+    const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const handleLastNameChange = (event) => setName(event.target.value);
-
     const [employee_id, setEmployeeId] = useState('');
+
     const handleEmployee_IdChange = (event) => setEmployeeId(event.target.value);
+    const handleFirstNameChange = (event) => setFirstName(event.target.value);
+    const handleLastNameChange = (event) => setLastName(event.target.value);
 
 
     const handleSubmit = async (event) => {
@@ -28,7 +27,7 @@ function SalesPerson() {
             },
         };
 
-        const response = await fetch(url, fetchConfig);
+        const response = await fetch(customerUrl, fetchConfig);
         if (response.ok) {
             const newCustomer = await response.json();
             setFirstName('');
@@ -45,16 +44,16 @@ function SalesPerson() {
                   <h1>Create a new sales person</h1>
                   <form onSubmit={handleSubmit} id="create-sales-person-form">
                     <div className="form-floating mb-3">
-                      <input onChange={handleFirstNameChange} placeholder="FirstName" required type="text" name="FirstName" id="FirstName" value={FirstName} className="form-control" />
-                      <label htmlFor="FirstName">FirstName</label>
+                      <input onChange={handleFirstNameChange} placeholder="FirstName" required type="text" name="FirstName" id="FirstName" value={firstName} className="form-control" />
+                      <label htmlFor="FirstName">First Name</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input onChange={handleLastNameChange} placeholder="LastName" required type="text" name="LastName" id="LastName" value={LastName} className="form-control" />
-                      <label htmlFor="LastName">LastName</label>
+                      <input onChange={handleLastNameChange} placeholder="LastName" required type="text" name="LastName" id="LastName" value={lastName} className="form-control" />
+                      <label htmlFor="LastName">Last Name</label>
                     </div>
                     <div className="form-floating mb-3">
                       <input onChange={handleEmployee_IdChange} required type="text" name="Employee_Id" id="Employee_Id" value={employee_id} className="form-control"/>
-                      <label htmlFor="Employee_Id">Employee_Id</label>
+                      <label htmlFor="Employee_Id">Employee ID</label>
                     </div>
                     <button className="btn btn-primary">Create</button>
                   </form>

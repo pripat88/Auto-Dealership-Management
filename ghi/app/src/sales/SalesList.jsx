@@ -58,7 +58,7 @@ function SalesList() {
                     </thead>
                     <tbody>
                         {sales.filter((sales) => {
-                            return filter === '' ? sales : SalesListForm.sales_person.name.includes(filter);
+                            return filter === '' ? sales : sales.sales_person.name.includes(filter);
                         }).map(sales => {
                             return (
                                 <tr key={sales.id}>
