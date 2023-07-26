@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function SalesPersonForm() {
+function SalesPerson() {
     const [firstName, setFirstName] = useState(false);
     const handleFirstNameChange = (event) => setName(event.target.value);
 
@@ -63,4 +63,4 @@ function SalesPersonForm() {
             </div>
           );
         };
-    export default SalesPersonForm;
+    export default SalesPerson;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function SalesListForm() {
+function SalesList() {
     const [load, setLoad] = useState(false);
 
     const [salesPersons, setSalesPersons] = useState([]);
