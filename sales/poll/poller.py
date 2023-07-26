@@ -33,8 +33,8 @@ def poll(repeat=True):
 
         except Exception as e:
             print(e, file=sys.stderr)
-        
-        if (not repeat):
+
+        if not repeat:
             break
 
         time.sleep(60)
