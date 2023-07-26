@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 function CustomerForm() {
   const [name, setName] = useState('');
   const handleNameChange = (event) => setName(event.target.value);
@@ -53,7 +54,7 @@ function CustomerForm() {
                   <label htmlFor="address">Address</label>
                 </div>
                 <div className="form-floating mb-3">
-                  <input onChange={handlecolorChange} placeholder="123-123-1234" required type="tel" name="phone_number" id="phone_number" value={phoneNumber} className="form-control" pattern="[0-9]{3}-[0-9] {3}- [0-9]-{4}"/>
+                  <input onChange={handlePhoneChange} placeholder="123-123-1234" required type="tel" name="phone_number" id="phone_number" value={phoneNumber} className="form-control" pattern="[0-9]{3}-[0-9] {3}- [0-9]-{4}"/>
                   <label htmlFor="phone_number">Phone Number</label>
                 </div>
                 <button className="btn btn-primary">Create</button>

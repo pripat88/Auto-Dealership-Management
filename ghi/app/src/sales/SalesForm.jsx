@@ -118,7 +118,7 @@ function CustomerForm() {
                 </select>
                 </div>
                 <div className="mb-3">
-                <select onChange={handleCustomerChange} name="customer" id="customer" value={customer} className="form-control" >
+                <select onChange={handleCustomerChange} required type= "text" name="customer" id="customer" value={customer} className="form-control" >
                 <option value="">Choose a customer</option>
                 {bins.map((bin) => {
                   return (
@@ -141,4 +141,4 @@ function CustomerForm() {
       );
     };
 }
-    export default CustomerForm;
+    export default SalesForm;
