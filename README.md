@@ -2,8 +2,8 @@
 
 Team:
 
-- Person 1 - Priya Patel/ Sales
-- Person 2 - Leah Nagarpowers/ Services
+* Person 1 - Which microservice?
+* Person 2 - Which microservice?
 
 ## Design
 

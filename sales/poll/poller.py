@@ -27,13 +27,13 @@ def get_automobile():
 
 def poll(repeat=True):
     while True:
-        print('Sales poller polling for data')
+        print("Sales poller polling for data")
         try:
             get_automobile()
 
         except Exception as e:
             print(e, file=sys.stderr)
-
+        
         if (not repeat):
             break
 
