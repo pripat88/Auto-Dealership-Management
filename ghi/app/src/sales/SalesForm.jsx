@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 
-function CustomerForm() {
+function SalesForm() {
     const [load, setLoad] = useState(false);
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const [automobile, setAutomobile] = useState('');
     const handleAutomobileChange = (event) => setName(event.target.value);
@@ -21,7 +21,7 @@ function CustomerForm() {
     const[salesPersons, setSalesPersons] = useState([]);
     const[customers, setCustomers] = useState([]);
 
-    const getAll = async => {
+    const getAll = async () => {
         const automobileUrl = 'http://localhost:8090/api/automobiles/';
         const automobilesResponse = await fetch(automobileUrl);
 
@@ -36,7 +36,7 @@ function CustomerForm() {
 
         if (SalesPersonsResponse.ok) {
             const salesPersonData = await SalesPersonsResponse.json();
-            setSalesPerson(salesPersonData.sales_persons);
+            setSalesPersons(salesPersonData.sales_persons);
 
         }
         const customersUrl = 'http://localhost:8090/api/customers/';
