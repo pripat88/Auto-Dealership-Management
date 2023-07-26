@@ -26,7 +26,7 @@ def mocked_requests_get(*args, **kwargs):
         def json(self):
             return self.json_data
 
-    if args[0] == 'http://project-beta-inventory-api-1:8000/api/automobiles/':
+    if args[0] == "http://project-beta-inventory-api-1:8000/api/automobiles/":
         data = {
             "autos": [
                 {"href": "/api/automobiles/1/", "vin": "1", "sold": True},
@@ -40,8 +40,7 @@ def mocked_requests_get(*args, **kwargs):
 
 
 class Test_Poller(unittest.TestCase):
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
+    @mock.patch("requests.get", side_effect=mocked_requests_get)
     def test_fetch(self, mock_get):
         AutomobileVO.objects.all().delete()
         poll(False)

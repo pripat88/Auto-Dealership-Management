@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function AppointmentForm() {
   const navigate = useNavigate();
-  const [technicians, setTechnichians] = useState([]);
+  const [technicians, setTechnicians] = useState([]);
   const [technician, setTechnician] = useState("");
   const [vin, setVin] = useState("");
   const [customer, setCustomer] = useState("");

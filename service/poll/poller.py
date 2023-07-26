@@ -20,26 +20,22 @@ def get_automobile():
 
     for automobile in content["autos"]:
         AutomobileVO.objects.update_or_create(
-            vin = automobile["vin"],
-            color = automobile["color"],
-            year = automobile ["year"],
-            model = automobile ["model"]["name"],
+            vin=automobile["vin"],
+            color=automobile["color"],
+            year=automobile["year"],
+            model=automobile["model"]["name"],
         )
 
 
 def poll(repeat=True):
     while True:
-        print('Service poller polling for data')
+        print("Service poller polling for data")
         try:
-            # Write your polling logic, here
-            # Do not copy entire file
-
-            get_service()
-        
+            get_automobile()
         except Exception as e:
             print(e, file=sys.stderr)
 
-        if (not repeat):
+        if not repeat:
             break
 
         time.sleep(60)
