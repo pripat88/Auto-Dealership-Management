@@ -9,14 +9,13 @@ function SalesPerson() {
     const handleFirstNameChange = (event) => setFirstName(event.target.value);
     const handleLastNameChange = (event) => setLastName(event.target.value);
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = {};
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const data = {};
-
-        data.firstName = firstName;
-        data.lastName = lastName;
-        data.employee_id = employee_id;
+    data.firstName = firstName;
+    data.lastName = lastName;
+    data.employee_id = employee_id;
 
         const customerUrl = 'http://localhost:8090/api/salespeople/'
         const fetchConfig ={
