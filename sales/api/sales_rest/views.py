@@ -3,7 +3,12 @@ from django.views.decorators.http import require_http_methods
 import json
 from django.http import JsonResponse
 from .models import AutomobileVO, SalesPerson, Sale, Customer
-from .encoders import AutomobileVOEncoder, SalesPersonEncoder, CustomerEncoder, SaleEncoder
+from .encoders import (
+    AutomobileVOEncoder,
+    SalesPersonEncoder,
+    CustomerEncoder,
+    SaleEncoder,
+)
 
 
 @require_http_methods(["GET"])
@@ -42,7 +47,7 @@ def api_sales_person(request):
             return JsonResponse(
                 {"message": "Could not create salesperson"},
                 status=400,
-                )
+            )
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
@@ -111,7 +116,7 @@ def api_customers(request):
             return JsonResponse(
                 {"message": "Could not create customer"},
                 status=400,
-                )
+            )
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
@@ -153,11 +158,14 @@ def api_customer(request, id):
                 status=404,
             )
 
+
 @require_http_methods(["GET", "POST"])
 def api_sales(request, sales_person_employee_id=None):
     if request.method == "GET":
         if sales_person_employee_id is not None:
-            sales_records = Sale.objects.filter(sales_person_employee_id=sales_person_employee_id)
+            sales_records = Sale.objects.filter(
+                sales_person_employee_id=sales_person_employee_id
+            )
         else:
             sales_records = Sale.objects.all()
         return JsonResponse(
@@ -210,6 +218,7 @@ def api_sales(request, sales_person_employee_id=None):
                     status=400,
                 )
 
+
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_sale(request, id):
     if request.method == "GET":
@@ -234,7 +243,7 @@ def api_sale(request, id):
             return JsonResponse(
                 {"message": "No customer to delete"},
                 status=404,
-                )
+            )
 
     else:
         content = json.loads(request.body)
@@ -246,7 +255,7 @@ def api_sale(request, id):
             return JsonResponse(
                 {"message": "Invalid sales person to ID"},
                 status=400,
-                )
+            )
         try:
             if "customer" in content:
                 customer = Customer.objects.get(id=content["customer"])
@@ -255,7 +264,7 @@ def api_sale(request, id):
             return JsonResponse(
                 {"message": "Invalid customer ID"},
                 status=400,
-                )
+            )
         try:
             if "automobile" in content:
                 automobile = AutomobileVO.objects.get(vin=content["automobile"])
@@ -264,7 +273,7 @@ def api_sale(request, id):
             return JsonResponse(
                 {"message": "Invalid automobile VIN"},
                 status=400,
-                )
+            )
         try:
             Sale.objects.filter(id=id).update(**content)
             sale = Sale.objects.get(id=id)
@@ -277,4 +286,4 @@ def api_sale(request, id):
             return JsonResponse(
                 {"message": "Sales record does not exist"},
                 status=404,
-                    )
+            )

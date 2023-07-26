@@ -21,7 +21,6 @@ def get_automobile():
         AutomobileVO.objects.update_or_create(
             vin=automobile["vin"],
             sold=automobile["sold"],
-
         )
 
 

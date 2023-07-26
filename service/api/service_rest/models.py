@@ -8,7 +8,7 @@ class Technician(models.Model):
 
 
 class AutomobileVO(models.Model):
-      sold = models.BooleanField(default=False)
+    sold = models.BooleanField(default=False)
 
 
 class Appointment(models.Model):
