@@ -1,54 +1,9 @@
 from django.shortcuts import render
-from common.json import ModelEncoder
 from django.views.decorators.http import require_http_methods
 import json
 from django.http import JsonResponse
 from .models import AutomobileVO, SalesPerson, Sale, Customer
-# Create your views here.
-
-
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        "vin",
-        "sold",
-    ]
-
-
-class SalesPersonEncoder(ModelEncoder):
-    model = SalesPerson
-    properties = [
-        "first_name",
-        "last_name",
-        "employee_id",
-    ]
-
-
-class CustomerEncoder(ModelEncoder):
-    model = Customer
-    properties = [
-        "first_name",
-        "last_name",
-        "address",
-        "phone_number",
-        "id",
-    ]
-
-
-class SaleEncoder(ModelEncoder):
-    model = Sale
-    properties = [
-        "automobile",
-        "salesperson",
-        "customer",
-        "price",
-        "id",
-    ]
-    encoders = {
-        "customer": CustomerEncoder,
-        "sales_person": SalesPersonEncoder,
-        "autombile": AutomobileVOEncoder
-    }
+from .encoders import AutomobileVOEncoder, SalesPersonEncoder, CustomerEncoder, SaleEncoder
 
 
 @require_http_methods(["GET"])
@@ -60,6 +15,7 @@ def api_automobiles(request):
             encoder=AutomobileVOEncoder,
         )
 
+
 @require_http_methods(["GET", "POST"])
 def api_sales_person(request):
     if request.method == "GET":
@@ -70,7 +26,7 @@ def api_sales_person(request):
                 encoder=SalesPersonEncoder,
             )
         except:
-            return JsonResponse({"message":"There are no sales persons"})
+            return JsonResponse({"message": "There are no sales persons"})
 
         # Get the Location object and put it in the content dict
     else:
@@ -87,6 +43,7 @@ def api_sales_person(request):
                 {"message": "Could not create salesperson"},
                 status=400,
                 )
+
 
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_sales_person(request, id):
@@ -151,8 +108,9 @@ def api_customers(request):
                 safe=False,
             )
         except:
-            return JsonResponse({"message": "Could not create customer"},
-                    status=400,
+            return JsonResponse(
+                {"message": "Could not create customer"},
+                status=400,
                 )
 
 
