@@ -1,12 +1,10 @@
-from tkinter import CASCADE
-from django.urls import reverse
 from django.db import models
+
 
 class Technician(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     employee_id = models.CharField(max_length=200)
-
 
 
 class AutomobileVO(models.Model):
@@ -23,6 +21,6 @@ class Appointment(models.Model):
     vip = models.BooleanField(default=False)
     technician = models.ForeignKey(
         Technician,
-        related_name= "Technician",
-        on_delete=CASCADE,
-)
+        related_name="Technician",
+        on_delete=models.CASCADE,
+    )
