@@ -13,7 +13,11 @@ urlpatterns = [
     path("customers/", api_customers, name="api_customers"),
     path("customers/<int:pk>/", api_customers, name="api_customers"),
     path("sales_person/", api_sales_person, name="api_sales_person"),
-    path("sales_person/<int:pk>/", api_sales_person_detail, name="api_sales_person_detail"),
+    path(
+        "sales_person/<int:pk>/",
+        api_sales_person_detail,
+        name="api_sales_person_detail",
+    ),
     path(
         "sales_person/<int:sales_person_employee_id>/sales/",
         api_sales,
