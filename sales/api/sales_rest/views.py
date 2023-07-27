@@ -152,11 +152,14 @@ def api_customer(request, id):
                 status=404,
             )
 
+
 @require_http_methods(["GET", "POST"])
 def api_sales(request, sales_person_employee_id=None):
     if request.method == "GET":
         if sales_person_employee_id is not None:
-            sales_records = Sale.objects.filter(sales_person_employee_id=sales_person_employee_id)
+            sales_records = Sale.objects.filter(
+                sales_person_employee_id=sales_person_employee_id
+                )
         else:
             sales_records = Sale.objects.all()
         return JsonResponse(
@@ -208,6 +211,7 @@ def api_sales(request, sales_person_employee_id=None):
                     {"message": "could not create sales record"},
                     status=400,
                 )
+
 
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_sale(request, id):

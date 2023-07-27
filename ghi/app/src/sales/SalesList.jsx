@@ -57,17 +57,17 @@ function SalesList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {sales.filter((sales) => {
-                            return filter === '' ? sales : sales.sales_person.name.includes(filter);
-                        }).map(sales => {
+                        {sales.filter((sale) => {
+                            return filter === '' ? sale : sale.sales_person.name.includes(filter);
+                        }).map(sale => {
                             return (
-                                <tr key={sales.id}>
-                                    <td>{sales.sales_person.name}</td>
-                                    <td>{sales.sales_person.employee_Id}</td>
-                                    <td>{sales.sales_person.name}</td>
-                                    <td>{sales.customer.name}</td>
-                                    <td>{sales.automobile.vin}</td>
-                                    <td><span>$</span>{sales.price}</td>
+                                <tr key={sale.id}>
+                                    <td>{sale.sales_person.name}</td>
+                                    <td>{sale.sales_person.employee_Id}</td>
+                                    <td>{sale.sales_person.name}</td>
+                                    <td>{sale.customer.name}</td>
+                                    <td>{sale.automobile.vin}</td>
+                                    <td><span>$</span>{sale.price}</td>
                                 </tr>
                             );
                         })}
