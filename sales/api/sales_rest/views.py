@@ -30,10 +30,9 @@ def api_sales_person(request):
                 {"sales_persons": sales_persons},
                 encoder=SalesPersonEncoder,
             )
-        except:
+        except Exception:
             return JsonResponse({"message": "There are no sales persons"})
 
-        # Get the Location object and put it in the content dict
     else:
         try:
             content = json.loads(request.body)
@@ -43,7 +42,7 @@ def api_sales_person(request):
                 encoder=SalesPersonEncoder,
                 safe=False,
             )
-        except:
+        except Exception:
             return JsonResponse(
                 {"message": "Could not create salesperson"},
                 status=400,
@@ -51,7 +50,7 @@ def api_sales_person(request):
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
-def api_sales_person(request, id):
+def api_sales_person_detail(request, id):
     if request.method == "GET":
         try:
             sales_person = SalesPerson.objects.get(id=id)
@@ -99,7 +98,7 @@ def api_customers(request):
                 {"customers": customers},
                 encoder=CustomerEncoder,
             )
-        except:
+        except Exception:
             return JsonResponse({"message": "There are no customers"})
 
         # Get the Location object and put it in the content dict
@@ -112,7 +111,7 @@ def api_customers(request):
                 encoder=CustomerEncoder,
                 safe=False,
             )
-        except:
+        except Exception:
             return JsonResponse(
                 {"message": "Could not create customer"},
                 status=400,
@@ -212,7 +211,7 @@ def api_sales(request, sales_person_employee_id=None):
                     encoder=SaleEncoder,
                     safe=False,
                 )
-            except:
+            except Exception:
                 return JsonResponse(
                     {"message": "could not create sales record"},
                     status=400,

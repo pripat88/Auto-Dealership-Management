@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function CustomerForm() {
-  const [load, setLoad] = useState(false);
-  const navigate = useNavigate;
+function SalesForm() {
+    const [load, setLoad] = useState(false);
+    const navigate = useNavigate();
 
-  const [automobile, setAutomobile] = useState("");
-  const handleAutomobileChange = (event) => setName(event.target.value);
+    const [automobile, setAutomobile] = useState('');
+    const [salesPerson, setSalesPerson] = useState('');
+    const [customer, setCustomer] = useState('');
+    const [price, setPrice] = useState('');
+    const[automobiles, setAutomobiles] = useState([]);
+    const[salesPersons, setSalesPersons] = useState([]);
+    const[customers, setCustomers] = useState([]);
 
-  const [salesPerson, setSalesPerson] = useState("");
-  const handleSalesPersonChange = (event) => setAddress(event.target.value);
+    const handleAutomobileChange = (event) => setAutomobile(event.target.value);
+    const handleSalesPersonChange = (event) => setSalesPerson(event.target.value);
+    const handleCustomerChange = (event) => setCustomer(event.target.value);
+    const handlePriceChange = (event) => setPrice(event.target.value);
 
-  const [customer, setCustomer] = useState("");
-  const handleCustomerChange = (event) => setName(event.target.value);
-
-  const [price, setPrice] = useState("");
-  const handlePriceChange = (event) => setName(event.target.value);
-
-  const [automobiles, setAutomobiles] = useState([]);
-  const [salesPersons, setSalesPersons] = useState([]);
-  const [customers, setCustomers] = useState([]);
-
-  const getAll = async () => {
-    const automobileUrl = "http://localhost:8090/api/automobiles/";
-    const automobilesResponse = await fetch(automobileUrl);
+    const getAll = async () => {
+        const automobileUrl = 'http://localhost:8090/api/automobiles/';
+        const automobilesResponse = await fetch(automobileUrl);
 
     if (automobilesResponse.ok) {
       const autoData = await automobilesResponse.json();
@@ -33,11 +30,12 @@ function CustomerForm() {
 
     const SalesPersonsResponse = await fetch(salesPersonsUrl);
 
-    if (SalesPersonsResponse.ok) {
-      const salesPersonData = await SalesPersonsResponse.json();
-      setSalesPerson(salesPersonData.sales_persons);
-    }
-    const customersUrl = "http://localhost:8090/api/customers/";
+        if (SalesPersonsResponse.ok) {
+            const salesPersonData = await SalesPersonsResponse.json();
+            setSalesPersons(salesPersonData.sales_persons);
+
+        }
+        const customersUrl = 'http://localhost:8090/api/customers/';
 
     const customersResponse = await fetch(customersUrl);
 
@@ -91,63 +89,39 @@ function CustomerForm() {
             <h1>Record a new sale</h1>
             <form onSubmit={handleSubmit} id="create-sales-form">
               <div className="mb-3">
-                <select
-                  onChange={handleAutomobileChange}
-                  required
-                  type="text"
-                  name="automobile"
-                  id="automobile"
-                  value={automobile}
-                  className="form-control"
-                >
-                  <option value="">Choose an automobile</option>
-                  {bins.map((bin) => {
-                    return (
-                      <option key={automobile.vin} value={automobile.vin}>
-                        {automobile.vin}
-                      </option>
-                    );
-                  })}
+                <select onChange={handleAutomobileChange} required type="text" name="automobile" id="automobile" value={automobile} className="form-control">
+                <option value="">Choose an automobile</option>
+                {automobiles.map((automobiles) => {
+                  return (
+                    <option key={automobile.vin} value={automobile.vin}>
+                      {automobile.vin}
+                    </option>
+                  );
+                })}
                 </select>
-              </div>
-              <div className="mb-3">
-                <select
-                  onChange={handleSalesPersonChange}
-                  required
-                  type="text"
-                  name="sales_person"
-                  id="sales_person"
-                  value={salesPerson}
-                  className="form-control"
-                >
-                  <option value="">Choose a sales person</option>
-                  {bins.map((bin) => {
-                    return (
-                      <option key={salesPerson.id} value={salesPerson.id}>
-                        {salesPerson.name}
-                      </option>
-                    );
-                  })}
+                </div>
+                <div className="mb-3">
+                <select onChange={handleSalesPersonChange} required type="text" name="sales_person" id="sales_person" value={salesPerson} className="form-control" >
+                <option value="">Choose a sales person</option>
+                {salesPersons.map((salesPersons) => {
+                  return (
+                    <option key={salesPerson.id} value={salesPerson.id}>
+                      {salesPerson.name}
+                    </option>
+                  );
+                })}
                 </select>
-              </div>
-              <div className="mb-3">
-                <select
-                  onChange={handleCustomerChange}
-                  required
-                  type="text"
-                  name="customer"
-                  id="customer"
-                  value={customer}
-                  className="form-control"
-                >
-                  <option value="">Choose a customer</option>
-                  {bins.map((bin) => {
-                    return (
-                      <option key={customer.id} value={customer.id}>
-                        {customer.name}
-                      </option>
-                    );
-                  })}
+                </div>
+                <div className="mb-3">
+                <select onChange={handleCustomerChange} required type= "text" name="customer" id="customer" value={customer} className="form-control" >
+                <option value="">Choose a customer</option>
+                {customers.map((customers) => {
+                  return (
+                    <option key={customer.id} value={customer.id}>
+                      {customer.name}
+                    </option>
+                  );
+                })}
                 </select>
               </div>
               <div className="form-floating mb-3">
