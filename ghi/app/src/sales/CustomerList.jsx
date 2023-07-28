@@ -18,7 +18,7 @@ function CustomerList(props) {
     };
     const deleteCustomer = async (id) => {
         const deleteUrl = 'http://localhost:8090/api/customers/${id}';
-        const personResponse = await fetch (deleteUrl, {
+        const deleteResponse = await fetch (deleteUrl, {
             method: 'DELETE',
         });
         if (deleteResponse.ok){
@@ -32,7 +32,7 @@ function CustomerList(props) {
 
     return (
         <div className="container">
-           <h1>Customer Records</h1>
+           <h1>Customer List</h1>
               <div className="mb-3">
                 <select onChange={handleFilterChange} required type="text" name="customers" id="customers" value={filter} className="form-select">
                 <option value="">All Customers</option>
