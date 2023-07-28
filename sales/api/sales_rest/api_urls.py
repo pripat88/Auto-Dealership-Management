@@ -18,13 +18,15 @@ urlpatterns = [
     path("sales_person/", api_sales_person, name="api_sales_person"),
     path(
         "sales_person/<int:pk>/",
-        api_sales_person_detail, name="api_sales_person_detail"
-        ),
+        api_sales_person_detail,
+        name="api_sales_person_detail",
+    ),
     path(
         "sales_person/<int:sales_person_employee_id>/sales/",
-        api_sales, name="api_employee_sales_records"
-        ),
+        api_sales,
+        name="api_employee_sales_records",
+    ),
     path("sales/", api_sales, name="api_sales"),
     path("sales/<int:pk>/", api_sale, name="api_sale"),
-    path("sales/history/", api_sales_history, name="api_sales_history")
+    path("sales/history/", api_sales_history, name="api_sales_history"),
 ]

@@ -37,17 +37,14 @@ class Customer(models.Model):
 
 class Sale(models.Model):
     automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name="Sale",
-        on_delete=models.CASCADE)
+        AutomobileVO, related_name="Sale", on_delete=models.CASCADE
+    )
     salesperson = models.ForeignKey(
-        SalesPerson,
-        related_name="Sale",
-        on_delete=models.CASCADE)
+        SalesPerson, related_name="Sale", on_delete=models.CASCADE
+    )
     customer = models.ForeignKey(
-        Customer,
-        related_name="Sale",
-        on_delete=models.CASCADE)
+        Customer, related_name="Sale", on_delete=models.CASCADE
+    )
     price = models.FloatField()
 
     def get_api_url(self):
