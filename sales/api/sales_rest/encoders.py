@@ -4,10 +4,7 @@ from common.json import ModelEncoder
 
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
-    properties = [
-        "vin",
-        "sold",
-    ]
+    properties = ["vin", "sold", "id"]
 
 
 class SalesPersonEncoder(ModelEncoder):

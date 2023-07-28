@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import SalesPerson, AutomobileVO, Customer, Sale
 
-# Register your models here.
+admin.site.register(SalesPerson)
+admin.site.register(Customer)
+admin.site.register(Sale)
+admin.site.register(AutomobileVO)

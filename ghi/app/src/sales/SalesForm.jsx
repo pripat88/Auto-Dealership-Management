@@ -9,6 +9,7 @@ function SalesForm() {
     const [salesPerson, setSalesPerson] = useState('');
     const [customer, setCustomer] = useState('');
     const [price, setPrice] = useState('');
+
     const[automobiles, setAutomobiles] = useState([]);
     const[salesPersons, setSalesPersons] = useState([]);
     const[customers, setCustomers] = useState([]);
@@ -22,11 +23,12 @@ function SalesForm() {
         const automobileUrl = 'http://localhost:8090/api/automobiles/';
         const automobilesResponse = await fetch(automobileUrl);
 
-    if (automobilesResponse.ok) {
-      const autoData = await automobilesResponse.json();
-      setAutomobiles(autoData.automobiles);
-    }
-    const salesPersonsUrl = "http://localhost:8090/api/sales_persons/";
+
+        if (automobilesResponse.ok){
+            const autoData = await automobilesResponse.json();
+            setAutomobiles(autoData.automobiles)
+        }
+        const salesPersonsUrl = 'http://localhost:8090/api/salespeople/';
 
     const SalesPersonsResponse = await fetch(salesPersonsUrl);
 
@@ -71,8 +73,8 @@ function SalesForm() {
     };
 
     const response = await fetch(salesUrl, fetchConfig);
-    if (response.ok) {
-      const Sales = await response.json();
+    if (response.ok){
+        const newSales = await response.json();
 
       setAutomobile("");
       setSalesPerson("");

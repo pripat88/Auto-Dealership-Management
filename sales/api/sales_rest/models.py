@@ -7,7 +7,7 @@ class AutomobileVO(models.Model):
     sold = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.vin
+        return f"{self.vin}"
 
 
 class SalesPerson(models.Model):
@@ -16,10 +16,10 @@ class SalesPerson(models.Model):
     employee_id = models.PositiveSmallIntegerField()
 
     def get_api_url(self):
-        return reverse("api_sales", kwargs={"pk": self.pk})
+        return reverse("api_sales_person", kwargs={"id": self.id})
 
     def __str__(self) -> str:
-        return self.model_name
+        return f"{self.first_name}"
 
 
 class Customer(models.Model):
@@ -28,15 +28,27 @@ class Customer(models.Model):
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=20)
 
+    def get_api_url(self):
+        return reverse("api_customers", kwargs={"id": self.id})
+
+    def __str__(self) -> str:
+        return f"{self.last_name}"
+
 
 class Sale(models.Model):
     automobile = models.ForeignKey(
         AutomobileVO, related_name="Sale", on_delete=models.CASCADE
     )
     salesperson = models.ForeignKey(
-        SalesPerson, related_name="Sale", on_delete=models.CASCADE
+         SalesPerson, related_name="Sale", on_delete=models.CASCADE
     )
     customer = models.ForeignKey(
         Customer, related_name="Sale", on_delete=models.CASCADE
     )
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.FloatField()
+
+    def get_api_url(self):
+        return reverse("api_sales", kwargs={"id": self.id})
+
+    def __str__(self) -> str:
+        return f"{self.id}"
