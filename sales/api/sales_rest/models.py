@@ -7,7 +7,7 @@ class AutomobileVO(models.Model):
     sold = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.vin
+        return f"{self.vin}"
 
 
 class SalesPerson(models.Model):
@@ -40,7 +40,7 @@ class Sale(models.Model):
         AutomobileVO, related_name="Sale", on_delete=models.CASCADE
     )
     salesperson = models.ForeignKey(
-        SalesPerson, related_name="Sale", on_delete=models.CASCADE
+         SalesPerson, related_name="Sale", on_delete=models.CASCADE
     )
     customer = models.ForeignKey(
         Customer, related_name="Sale", on_delete=models.CASCADE
