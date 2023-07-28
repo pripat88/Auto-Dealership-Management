@@ -9,15 +9,9 @@ function SalesPersonHistory() {
     const handleSearchChange = (event) => setSearch(event.target.value);
 
     const handleSearch = () => {
-        const lowerCaseSearch = search.toLowerCase();
+        setFilteredSales(sales.filter(sale => !search || sale.salesperson.first_name.includes(search)));
+    }
 
-        const filter = sales.filter((sale) => {
-          const salespersonFirstName = sale.salesperson.first_name.toLowerCase();
-          return !search || sale.salesperson.first_name.includes(lowerCaseSearch);
-        });
-
-        setFilter(filter);
-      };
       const fetchsalesPersonData = async (id) => {
         const salespersonUrl = 'http://localhost:8090/api/salespeople${id}/';
         try {
@@ -78,7 +72,6 @@ function SalesPersonHistory() {
            <h1>Sales Records</h1>
               <div className="mb-3">
                 <input onChange={(event) => {handleSearchChange(event); handleSearch();}} required type="search" name="" id="" value={filter} className="form-select"/>
-
                 </div>
                 <table className='table table-striped'>
                     <thead>
