@@ -1,37 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 function SalesPersonList() {
-    const [salesPerson, setSalesPerson] = useState([]);
+  const [salesPerson, setSalesPerson] = useState([]);
 
+  const getSalesPerson = async () => {
+    const salesPersonUrl = "http://localhost:8090/api/salespeople/";
+    try {
+      const salesPersonResponse = await fetch(salesPersonUrl);
 
-    const getSalesPerson = async () => {
-        const salesPersonUrl = 'http://localhost:8090/api/salespeople/';
-        try{
-        const salesPersonResponse = await fetch(salesPersonUrl);
-
-        if (salesPersonResponse.ok){
-            const salesPersonData = await salesPersonResponse.json();
-            setSalesPerson(salesPersonData.salesPerson)
-        }else{
-            return <div>Cannot get SalesPerson</div>
-        }
-        } catch(error){
-            return <div> Cannot get SalesPerson</div>
-        }
-    };
-    const deleteSalesPerson = async (id) => {
-        const deleteUrl = 'http://localhost:8090/api/salespeople/${id}';
-        const deleteResponse = await fetch (deleteUrl, {
-            method: 'DELETE',
-        });
-        if (deleteResponse.ok){
-            getSalesPerson();
-        }
-    };
-    useEffect(() => {
-        getSalesPerson();
-        deleteSalesPerson();
-    }, []);
+      if (salesPersonResponse.ok) {
+        const salesPersonData = await salesPersonResponse.json();
+        setSalesPerson(salesPersonData.salesPerson);
+      } else {
+        return <div>Cannot get SalesPerson</div>;
+      }
+    } catch (error) {
+      return <div> Cannot get SalesPerson</div>;
+    }
+  };
+  const deleteSalesPerson = async (id) => {
+    const deleteUrl = "http://localhost:8090/api/salespeople/${id}";
+    const deleteResponse = await fetch(deleteUrl, {
+      method: "DELETE",
+    });
+    if (deleteResponse.ok) {
+      getSalesPerson();
+    }
+  };
+  useEffect(() => {
+    getSalesPerson();
+    deleteSalesPerson();
+  }, []);
 
     return (
         <div className="container">
