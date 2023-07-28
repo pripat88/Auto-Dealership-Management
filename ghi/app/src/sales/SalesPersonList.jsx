@@ -46,7 +46,6 @@ function SalesPersonList() {
         </thead>
         <tbody>
           {salesPerson
-            .filter((customer) => {})
             .map((salesPerson) => {
               return (
                 <tr key={salesPerson.id}>
