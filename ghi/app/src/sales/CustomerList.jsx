@@ -16,7 +16,7 @@ function CustomerList(props) {
     }
   };
   const deleteCustomer = async (id) => {
-    const deleteUrl = "http://localhost:8090/api/customers/${id}";
+    const deleteUrl = `http://localhost:8090/api/customers/${id}`;
     const deleteResponse = await fetch(deleteUrl, {
       method: "DELETE",
     });

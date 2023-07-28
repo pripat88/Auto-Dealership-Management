@@ -5,7 +5,6 @@ function AutomobileForm() {
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
 
-  // Create a bunch of useState hooks and Change functions for the different inputs we need
   const [color, setColor] = useState("");
   const handleColorChange = (event) => setColor(event.target.value);
 
@@ -20,7 +19,6 @@ function AutomobileForm() {
 
   const [models, setModels] = useState([]);
 
-  // Fetch data for Models dropdown select field
   const fetchData = async () => {
     const url = "http://localhost:8100/api/models/";
 
@@ -38,7 +36,6 @@ function AutomobileForm() {
     fetchData();
   }, [load]);
 
-  // onSubmit Handle event
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -71,7 +68,6 @@ function AutomobileForm() {
     }
   };
 
-  // return Form JSX
   return (
     <div className="row">
       <div className="offset-3 col-6">
