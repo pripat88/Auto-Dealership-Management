@@ -8,7 +8,7 @@ function SalesPersonHistory() {
   const handleSearchChange = (event) => setSearch(event.target.value);
 
   const handleSearch = () => {
-    setFilteredSales(
+    setFilter(
       sales.filter(
         (sale) => !search || sale.salesperson.first_name.includes(search)
       )
@@ -16,7 +16,7 @@ function SalesPersonHistory() {
   };
 
   const fetchsalesPersonData = async (id) => {
-    const salespersonUrl = "http://localhost:8090/api/salespeople${id}/";
+    const salespersonUrl = `http://localhost:8090/api/salespeople${id}/`;
     try {
       const response = await fetch(salespersonUrl);
       if (response.ok) {
@@ -35,7 +35,7 @@ function SalesPersonHistory() {
     try {
       const salesresponse = await fetch(salesurl);
       if (salesresponse.ok) {
-        const data = await response.json;
+        const data = await salesresponse.json();
         setSales(data.sales);
         setFilter(data.sales);
       } else {
@@ -80,9 +80,8 @@ function SalesPersonHistory() {
           }}
           required
           type="search"
-          name=""
-          id=""
-          value={filter}
+          id="sales-search-input"
+          placeholder="Search by First Name"
           className="form-select"
         />
       </div>

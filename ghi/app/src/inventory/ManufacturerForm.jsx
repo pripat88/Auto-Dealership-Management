@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ManufacturerForm() {
   const navigate = useNavigate();
-  // Create a bunch of useState hooks and Change functions for the different inputs we need
   const [name, setName] = useState("");
   const handleNameChange = (event) => setName(event.target.value);
 
-  // onSubmit Handle event
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -33,7 +31,6 @@ function ManufacturerForm() {
     }
   };
 
-  // return Form JSX
   return (
     <div className="row">
       <div className="offset-3 col-6">

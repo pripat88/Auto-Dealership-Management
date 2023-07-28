@@ -19,7 +19,7 @@ function SalesPersonList() {
     }
   };
   const deleteSalesPerson = async (id) => {
-    const deleteUrl = "http://localhost:8090/api/salespeople/${id}";
+    const deleteUrl = `http://localhost:8090/api/salespeople/${id}`;
     const deleteResponse = await fetch(deleteUrl, {
       method: "DELETE",
     });
