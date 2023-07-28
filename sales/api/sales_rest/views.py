@@ -254,7 +254,9 @@ def api_sale(request, id):
         content = json.loads(request.body)
         try:
             if "sales_person" in content:
-                sales_person = SalesPerson.objects.get(id=content["sales_person"])
+                sales_person = SalesPerson.objects.get(
+                    id=content["sales_person"]
+                    )
                 content["sales_person"] = sales_person
         except SalesPerson.DoesNotexist:
             return JsonResponse(
@@ -272,7 +274,9 @@ def api_sale(request, id):
             )
         try:
             if "automobile" in content:
-                automobile = AutomobileVO.objects.get(vin=content["automobile"])
+                automobile = AutomobileVO.objects.get(
+                    vin=content["automobile"]
+                    )
                 content["automobile"] = automobile
         except AutomobileVO.DoesNotexist:
             return JsonResponse(
