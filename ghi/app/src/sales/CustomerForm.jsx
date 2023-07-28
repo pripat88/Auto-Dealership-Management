@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 
 function CustomerForm() {
-  const [name, setName] = useState('');
-  const handleNameChange = (event) => setName(event.target.value);
-
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
   const [address, setAddress] = useState('');
-  const handleAddressChange = (event) => setAddress(event.target.value);
-
   const [phoneNumber, setPhoneNumber] = useState('');
+
   const handlePhoneChange = (event) => setPhoneNumber(event.target.value);
+  const handleFirstNameChange = (event) => setFirstName(event.target.value);
+  const handleLastNameChange = (event) => setLastName(event.target.value);
+  const handleAddressChange = (event) => setAddress(event.target.value);
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {};
 
-    data.name = name;
+    data.first_name = first_name;
+    data.last_name = last_name;
     data.address = address;
     data.phone_number = phoneNumber;
 
@@ -28,16 +30,20 @@ function CustomerForm() {
         },
     };
 
-    const response = await fetch(customerUrl, fetchConfig);
-    if (response.ok) {
-        const newCustomer = await response.json();
-        setName('');
-        setAddress('');
-        setPhoneNumber('');
+    try {
+        const response = await fetch(customerUrl, fetchConfig);
+        if (response.ok) {
+            setFirstName('');
+            setLastName('');
+            setAddress('');
+            setPhoneNumber('');
 
-      }
+        } else {
+        }
 
-    }
+        }catch(error){
+        }
+    };
 
     return (
         <div className="row">
@@ -46,8 +52,12 @@ function CustomerForm() {
               <h1>Create a new Customer</h1>
               <form onSubmit={handleSubmit} id="create-customer-form">
                 <div className="form-floating mb-3">
-                  <input onChange={handleNameChange} placeholder="Name" required type="text" name="Name" id="Name" value={name} className="form-control" />
-                  <label htmlFor="name">Name</label>
+                  <input onChange={handleFirstNameChange} placeholder="FirstName" required type="text" name="first_name" id="first_name" value={first_name} className="form-control" />
+                  <label htmlFor="first_name">First Name</label>
+                </div>
+                <div className="form-floating mb-3">
+                  <input onChange={handleLastNameChange} placeholder="LastName" required type="text" name="last_name" id="last_name" value={last_name} className="form-control" />
+                  <label htmlFor="last_name">Last Name</label>
                 </div>
                 <div className="form-floating mb-3">
                   <input onChange={handleAddressChange} placeholder="address" required type="text" name="address" id="address" value={address} className="form-control" />
