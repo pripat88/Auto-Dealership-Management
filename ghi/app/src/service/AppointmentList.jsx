@@ -17,11 +17,11 @@ function AppointmentList() {
     const data = await appointmentResponse.json();
     if (appointmentResponse.ok) {
       setCompleted(true);
-      setAppointments((service) => {
-        return appointments.filter(
+      setAppointments(
+        [...appointments, data].filter(
           (appointment) => appointment.id !== event.id
-        );
-      });
+        )
+      );
     }
   };
 
