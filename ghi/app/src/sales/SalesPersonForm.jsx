@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 function SalesPerson() {
     const [firstName, setFirstName] = useState('');
@@ -18,7 +18,7 @@ function SalesPerson() {
         data.lastName = lastName;
         data.employee_id = employee_id;
 
-        const customerUrl = 'http://localhost:8090/api/sales_persons/'
+        const customerUrl = 'http://localhost:8090/api/salespeople/'
         const fetchConfig ={
             method: "post",
             body: JSON.stringify(data),
@@ -29,7 +29,6 @@ function SalesPerson() {
 
         const response = await fetch(customerUrl, fetchConfig);
         if (response.ok) {
-            const newCustomer = await response.json();
             setFirstName('');
             setLastName('');
             setEmployeeId('');
@@ -52,7 +51,7 @@ function SalesPerson() {
                       <label htmlFor="LastName">Last Name</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input onChange={handleEmployee_IdChange} required type="text" name="Employee_Id" id="Employee_Id" value={employee_id} className="form-control"/>
+                      <input onChange={handleEmployee_IdChange} required type="number" name="Employee_Id" id="Employee_Id" value={employee_id} className="form-control"/>
                       <label htmlFor="Employee_Id">Employee ID</label>
                     </div>
                     <button className="btn btn-primary">Create</button>
