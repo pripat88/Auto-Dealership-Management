@@ -249,21 +249,17 @@ def api_sale(request, id):
                 {"message": "No customer to delete"},
                 status=404,
             )
-            )
 
     else:
         content = json.loads(request.body)
         try:
             if "sales_person" in content:
-                sales_person = SalesPerson.objects.get(
-                    id=content["sales_person"]
-                    )
+                sales_person = SalesPerson.objects.get(id=content["sales_person"])
                 content["sales_person"] = sales_person
         except SalesPerson.DoesNotexist:
             return JsonResponse(
                 {"message": "Invalid sales person to ID"},
                 status=400,
-            )
             )
         try:
             if "customer" in content:
@@ -274,18 +270,14 @@ def api_sale(request, id):
                 {"message": "Invalid customer ID"},
                 status=400,
             )
-            )
         try:
             if "automobile" in content:
-                automobile = AutomobileVO.objects.get(
-                    vin=content["automobile"]
-                    )
+                automobile = AutomobileVO.objects.get(vin=content["automobile"])
                 content["automobile"] = automobile
         except AutomobileVO.DoesNotexist:
             return JsonResponse(
                 {"message": "Invalid automobile VIN"},
                 status=400,
-            )
             )
         try:
             Sale.objects.filter(id=id).update(**content)
