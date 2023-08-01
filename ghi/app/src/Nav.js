@@ -30,12 +30,9 @@ function Nav() {
               >
                 Inventory
               </button>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                  <Link className="dropdown-item" to="manufacturers">
+                  <Link className="dropdown-item" to="/manufacturers">
                     Manufacturer List
                   </Link>
                 </li>
@@ -43,7 +40,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="manufacturers/new">
+                  <Link className="dropdown-item" to="/manufacturers/new">
                     Manufacturer Form
                   </Link>
                 </li>
@@ -51,7 +48,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="models">
+                  <Link className="dropdown-item" to="/models">
                     Model List
                   </Link>
                 </li>
@@ -59,7 +56,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="models/new">
+                  <Link className="dropdown-item" to="/models/new">
                     Model Form
                   </Link>
                 </li>
@@ -67,7 +64,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="automobiles">
+                  <Link className="dropdown-item" to="/automobiles">
                     Automobile List
                   </Link>
                 </li>
@@ -75,7 +72,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="automobiles/new">
+                  <Link className="dropdown-item" to="/automobiles/new">
                     Automobile Form
                   </Link>
                 </li>
@@ -91,12 +88,9 @@ function Nav() {
               >
                 Sales
               </button>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                  <Link className="dropdown-item" to="sales_records">
+                  <Link className="dropdown-item" to="/sales_records">
                     Sales Record List
                   </Link>
                 </li>
@@ -104,7 +98,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="sales_records/new">
+                  <Link className="dropdown-item" to="/sales_records/new">
                     Sales Record Form
                   </Link>
                 </li>
@@ -112,7 +106,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="sales_persons/new">
+                  <Link className="dropdown-item" to="/sales_persons/new">
                     Sales Person Form
                   </Link>
                 </li>
@@ -120,8 +114,32 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="customers/new">
+                  <Link className="dropdown-item" to="/customers/new">
                     Customer Form
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/customers/<int:pk>/">
+                    Customer List
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/sales/history/">
+                    Sales Person History
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>            
+                  <Link className="dropdown-item" to="/sales/<int:pk>/">
+                    Sales Person List
                   </Link>
                 </li>
               </ul>
@@ -136,13 +154,9 @@ function Nav() {
               >
                 Services
               </button>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                  <Link className="dropdown-item" to="services">
-                    {" "}
+                  <Link className="dropdown-item" to="/services">
                     Service appointments
                   </Link>
                 </li>
@@ -150,7 +164,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="services/history">
+                  <Link className="dropdown-item" to="/services/history">
                     Service history
                   </Link>
                 </li>
@@ -158,7 +172,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="services/new">
+                  <Link className="dropdown-item" to="/services/new">
                     Service Form
                   </Link>
                 </li>
@@ -166,7 +180,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="services/technician/new">
+                  <Link className="dropdown-item" to="/services/technician/new">
                     Technician Form
                   </Link>
                 </li>
