@@ -43,7 +43,6 @@ function SalesPersonList() {
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Employee ID</th>
-
                         </tr>
                     </thead>
                     <tbody>

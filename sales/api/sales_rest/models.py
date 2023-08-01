@@ -42,12 +42,7 @@ class Sale(models.Model):
     salesperson = models.ForeignKey(
         SalesPerson, related_name="Sale", on_delete=models.CASCADE
     )
-         SalesPerson, related_name="Sale", on_delete=models.CASCADE
-    )
     customer = models.ForeignKey(
-        Customer, related_name="Sale", on_delete=models.CASCADE
-    )
-    price = models.DecimalField(max_digits=10, decimal_places=2)
         Customer, related_name="Sale", on_delete=models.CASCADE
     )
     price = models.FloatField()

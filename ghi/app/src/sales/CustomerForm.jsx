@@ -6,14 +6,11 @@ function CustomerForm() {
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
-  const [phoneNumber, setPhoneNumber] = useState("");
   const handlePhoneChange = (event) => setPhoneNumber(event.target.value);
   const handleFirstNameChange = (event) => setFirstName(event.target.value);
   const handleLastNameChange = (event) => setLastName(event.target.value);
   const handleAddressChange = (event) => setAddress(event.target.value);
-  const handleFirstNameChange = (event) => setFirstName(event.target.value);
-  const handleLastNameChange = (event) => setLastName(event.target.value);
-  const handleAddressChange = (event) => setAddress(event.target.value);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
