@@ -48,14 +48,14 @@ function SalesPersonList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {salesPerson.filter((customer) => {
+                        {salesPerson((customer) => {
                         }).map(salesPerson => {
                             return (
                                 <tr key={salesPerson.id}>
                                     <td>{salesPerson.first_name}</td>
                                     <td>{salesPerson.last_name}</td>
                                     <td>{salesPerson.employee_id}</td>
-                                    <td><button onClick={() => deleteSalesPerson(salesPerson.id)} type="button" className="btn btn-danger"> Delete</button></td>
+                                    <td><button onClick={() => deleteSalesPerson(salesPerson.id)} type="button" className="btn btn-danger">Delete</button></td>
                                 </tr>
                             );
                         })}

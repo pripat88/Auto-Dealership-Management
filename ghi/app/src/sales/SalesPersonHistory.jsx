@@ -9,7 +9,7 @@ function SalesPersonHistory() {
     const handleSearchChange = (event) => setSearch(event.target.value);
 
     const handleSearch = () => {
-        setFilteredSales(sales.filter(sale => !search || sale.salesperson.first_name.includes(search)));
+        setFilter(sales.filter(sale => !search || sale.salesperson.first_name.includes(search)));
     }
 
       const fetchsalesPersonData = async (id) => {
