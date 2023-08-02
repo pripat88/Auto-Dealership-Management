@@ -22,7 +22,7 @@ function SalesForm() {
 
         if (automobilesResponse.ok){
             const autoData = await automobilesResponse.json();
-            setAutomobiles(autoData.automobiles)
+            setAutomobile(autoData.automobiles)
         }
         const salesPersonsUrl = 'http://localhost:8090/api/salespeople/';
 
@@ -30,7 +30,7 @@ function SalesForm() {
 
         if (SalesPersonsResponse.ok) {
             const salesPersonData = await SalesPersonsResponse.json();
-            setSalesPersons(salesPersonData.sales_persons);
+            setSalesPerson(salesPersonData.sales_persons);
 
         }
         const customersUrl = 'http://localhost:8090/api/customers/';
@@ -39,7 +39,7 @@ function SalesForm() {
 
         if (customersResponse.ok) {
             const customerData = await customersResponse.json();
-            setCustomers(customerData.customers)
+            setCustomer(customerData.customers)
         }
         if (true) {
             setLoad(!load);
