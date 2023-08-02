@@ -10,10 +10,6 @@ function SalesForm() {
   const [customer, setCustomer] = useState("");
   const [price, setPrice] = useState("");
 
-    const[automobiles, setAutomobiles] = useState([]);
-    const[salesPersons, setSalesPersons] = useState([]);
-    const[customers, setCustomers] = useState([]);
-
     const handleAutomobileChange = (event) => setAutomobile(event.target.value);
     const handleSalesPersonChange = (event) => setSalesPerson(event.target.value);
     const handleCustomerChange = (event) => setCustomer(event.target.value);
