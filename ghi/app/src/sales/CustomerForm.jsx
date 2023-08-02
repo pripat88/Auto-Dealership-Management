@@ -103,7 +103,6 @@ function CustomerForm() {
             <button className="btn btn-primary">Create</button>
           </form>
         </div>
-        <button className="btn btn-primary">Create</button>
       </div>
     </div>
   );
