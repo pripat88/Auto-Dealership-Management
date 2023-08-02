@@ -90,7 +90,7 @@ function Nav() {
               </button>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                  <Link className="dropdown-item" to="/sales_records">
+                  <Link className="dropdown-item" to="/sales">
                     Sales Record List
                   </Link>
                 </li>
@@ -98,7 +98,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/sales_records/new">
+                  <Link className="dropdown-item" to="/sales/new">
                     Sales Record Form
                   </Link>
                 </li>
@@ -106,7 +106,7 @@ function Nav() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/sales_persons/new">
+                  <Link className="dropdown-item" to="/salespeople/new">
                     Sales Person Form
                   </Link>
                 </li>
@@ -130,7 +130,7 @@ function Nav() {
                   <hr className="dropdown-divider"  />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/sales/history/">
+                  <Link className="dropdown-item" to="/history/sales/">
                     Sales Person History
                   </Link>
                 </li>
@@ -138,7 +138,7 @@ function Nav() {
                   <hr className="dropdown-divider"/>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/sales/<int:pk>/">
+                  <Link className="dropdown-item" to="/salespeople/<int:pk>/">
                     Sales Person List
                   </Link>
                 </li>
