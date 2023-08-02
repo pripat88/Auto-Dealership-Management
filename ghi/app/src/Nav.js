@@ -1,8 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
 
-
-
-
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-info">
@@ -122,7 +119,7 @@ function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <hr className="dropdown-divider" />
+                  <hr className="dropdown-divider"/>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/customers/<int:pk>/">
@@ -130,7 +127,7 @@ function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <hr className="dropdown-divider" />
+                  <hr className="dropdown-divider"  />
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/sales/history/">
@@ -138,9 +135,9 @@ function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <hr className="dropdown-divider" />
+                  <hr className="dropdown-divider"/>
                 </li>
-                <li>            
+                <li>
                   <Link className="dropdown-item" to="/sales/<int:pk>/">
                     Sales Person List
                   </Link>
@@ -148,13 +145,7 @@ function Nav() {
               </ul>
             </li>
             <li className="nav-item dropdown">
-              <button
-                className="btn btn-info dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <button className="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Services
               </button>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -176,11 +167,13 @@ function Nav() {
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/services/new">
+
                     Service Form
+
                   </Link>
                 </li>
                 <li>
-                  <hr className="dropdown-divider" />
+                  <hr className="dropdown-divider"/>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/services/technician/new">
@@ -194,6 +187,7 @@ function Nav() {
       </div>
     </nav>
   );
+
 }
 
 export default Nav;

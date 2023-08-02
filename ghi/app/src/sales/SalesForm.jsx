@@ -10,42 +10,48 @@ function SalesForm() {
   const [customer, setCustomer] = useState("");
   const [price, setPrice] = useState("");
 
-  const handleAutomobileChange = (event) => setAutomobile(event.target.value);
-  const handleSalesPersonChange = (event) => setSalesPerson(event.target.value);
-  const handleCustomerChange = (event) => setCustomer(event.target.value);
-  const handlePriceChange = (event) => setPrice(event.target.value);
+    const[automobiles, setAutomobiles] = useState([]);
+    const[salesPersons, setSalesPersons] = useState([]);
+    const[customers, setCustomers] = useState([]);
+
+    const handleAutomobileChange = (event) => setAutomobile(event.target.value);
+    const handleSalesPersonChange = (event) => setSalesPerson(event.target.value);
+    const handleCustomerChange = (event) => setCustomer(event.target.value);
+    const handlePriceChange = (event) => setPrice(event.target.value);
 
   const getAll = async () => {
     const automobileUrl = "http://localhost:8090/api/automobiles/";
     const automobilesResponse = await fetch(automobileUrl);
 
-    if (automobilesResponse.ok) {
-      const autoData = await automobilesResponse.json();
-      setAutomobile(autoData.automobiles);
-    }
-    const salesPersonsUrl = "http://localhost:8090/api/salespeople/";
+
+        if (automobilesResponse.ok){
+            const autoData = await automobilesResponse.json();
+            setAutomobiles(autoData.automobiles)
+        }
+        const salesPersonsUrl = 'http://localhost:8090/api/salespeople/';
 
     const SalesPersonsResponse = await fetch(salesPersonsUrl);
 
-    if (SalesPersonsResponse.ok) {
-      const salesPersonData = await SalesPersonsResponse.json();
-      setSalesPerson(salesPersonData.sales_persons);
-    }
-    const customersUrl = "http://localhost:8090/api/customers/";
+        if (SalesPersonsResponse.ok) {
+            const salesPersonData = await SalesPersonsResponse.json();
+            setSalesPersons(salesPersonData.sales_persons);
+
+        }
+        const customersUrl = 'http://localhost:8090/api/customers/';
 
     const customersResponse = await fetch(customersUrl);
 
-    if (customersResponse.ok) {
-      const customerData = await customersResponse.json();
-      setCustomer(customerData.customers);
-    }
-    if (true) {
-      setLoad(!load);
-    }
-  };
-  useEffect(() => {
-    getAll();
-  }, [load]);
+        if (customersResponse.ok) {
+            const customerData = await customersResponse.json();
+            setCustomers(customerData.customers)
+        }
+        if (true) {
+            setLoad(!load);
+        }
+    };
+    useEffect(() => {
+        getAll();
+    },[load]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -70,13 +76,14 @@ function SalesForm() {
     if (response.ok) {
       const newSales = await response.json();
 
-      setAutomobile("");
-      setSalesPerson("");
-      setCustomer("");
-      setPrice("");
+        setAutomobile('');
+        setSalesPerson('');
+        setCustomer('');
+        setPrice('');
 
       navigate("/sales/");
     }
+
 
     return (
       <div className="row">

@@ -11,7 +11,6 @@ function CustomerForm() {
   const handleLastNameChange = (event) => setLastName(event.target.value);
   const handleAddressChange = (event) => setAddress(event.target.value);
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {};
