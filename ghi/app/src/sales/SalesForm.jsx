@@ -98,7 +98,7 @@ function SalesForm() {
                   className="form-control"
                 >
                   <option value="">Choose an automobile</option>
-                  {automobiles.map((automobiles) => {
+                  {automobile.map((automobiles) => {
                     return (
                       <option key={automobile.vin} value={automobile.vin}>
                         {automobile.vin}
@@ -118,7 +118,7 @@ function SalesForm() {
                   className="form-control"
                 >
                   <option value="">Choose a sales person</option>
-                  {salesPersons.map((salesPersons) => {
+                  {salesPerson.map((salesPersons) => {
                     return (
                       <option key={salesPerson.id} value={salesPerson.id}>
                         {salesPerson.name}
@@ -138,7 +138,7 @@ function SalesForm() {
                   className="form-control"
                 >
                   <option value="">Choose a customer</option>
-                  {customers.map((customers) => {
+                  {customer.map((customers) => {
                     return (
                       <option key={customer.id} value={customer.id}>
                         {customer.name}
